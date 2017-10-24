@@ -194,6 +194,50 @@ class Core extends Main_Controller {
     }
     /*--------------end vendor-----------------------------*/
     
+    /*--------------size-----------------------------*/
+    public function size(){
+        $this->data['headtitle']="Ads Size";
+        $this->data['menu_id']="24";
+        $this->data['parent']="9";
+        $id="all";
+        $this->data['size']=$this->basedata->getSize($id);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/size/size',$this->data);
+    }
+    public function addsize(){
+        $this->data['headtitle']="Vendor";
+        $this->data['menu_id']="24";
+        $this->data['rec']=array();
+        $id="all";
+        $this->data['size']=$this->basedata->getSize($id);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/size/form',$this->data);
+    }
+    public function editsize(){
+        $rec=$this->basedata->getSize($this->record);
+        $this->data['headtitle']="Ads Size";
+        $this->data['menu_id']="24";
+        $this->data['rec']=$rec;
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/size/form',$this->data);
+    }
+    public function savesize(){
+        $post=$this->input->post();
+        $this->data['headtitle']="Ads Size";
+        $this->data['menu_id']="24";
+        $this->data['rec']=array();
+        $this->form_validation->set_rules('size_name', 'Size Name', 'required');
+        if ($this->form_validation->run() == FALSE){
+            $this->tempe->load($this->theme.'/modul',$this->theme.'/size/form',$this->data);
+        }else{
+            $this->basedata->setsize($post);
+            redirect('core/size', 'refresh');
+        }
+    }
+    public function remsize(){
+        $this->basedata->delSize($this->record);
+        redirect('core/size', 'refresh');
+    }
+    /*--------------end size-----------------------------*/
+    
+    
     /*---------------------dashboard--------------------------------*/
     public function dashboard(){
         $this->data['headtitle']="Dashboard";

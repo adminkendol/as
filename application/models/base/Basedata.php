@@ -145,6 +145,34 @@ class Basedata extends CI_Model {
     }
     /*---------------------end vendor---------------*/
     
+    /*---------------------size---------------*/
+    public function getSize($id){
+        if($id!="all"){
+            $where="WHERE ads_size_id='$id'";
+        }else{
+            $where="";
+        }
+        $query=$this->db->query("SELECT * FROM as_ads_size
+                $where ORDER BY ads_size_id DESC");
+        return $query->result();
+    }
+    public function setSize($post){
+        $cek=$this->getSize($post['idRec']);
+        $data = array(
+            'ads_size_name'=>$post['size_name']
+        );
+        if(sizeof($cek)==0){
+            $this->db->insert('as_ads_size',$data);
+        }else{
+            $this->db->where('ads_size_id', $post['idRec']);
+            $this->db->update('as_ads_size', $data);
+        }
+    }
+    public function delSize($id){
+        $this->db->query("DELETE FROM as_ads_size WHERE ads_size_id='$id'");
+    }
+    /*---------------------end size---------------*/
+    
     /*---------------------dashboard---------------*/
     function getDashBeliM(){
         $query=$this->db->query("SELECT a.tanggal,
