@@ -4,8 +4,8 @@ if(sizeof($rec)==0){
     $type_name=set_value('type_name');
     $vendor_id=set_value('vendor_id');
 }else{
-    $idRec=$rec[0]->id;
-    $type_name=$rec[0]->type_name;
+    $idRec=$rec[0]->ads_type_id;
+    $type_name=$rec[0]->ads_type_name;
     $vendor_id=$rec[0]->vendor_id;
 }
 ?>
@@ -43,13 +43,13 @@ if(sizeof($rec)==0){
                             <select class="form-control" name="vendor_id" id="vendor_id">
                                 <option value=""></option>
                                         <?php foreach($vendor as $ven){ 
-                                            if($ven->id==$vendor_id){
+                                            if($ven->vendor_id==$vendor_id){
                                                 $selected="selected";
                                             }else{
                                                 $selected="";
                                             }
                                             ?>
-                                <option value="<?php echo $ven->vendor_id; ?>" <?php echo $selected; ?>><?php echo $ven->vendor_nama; ?></option>
+                                <option value="<?php echo $ven->vendor_id; ?>" <?php echo $selected; ?>><?php echo $ven->vendor_name; ?></option>
                                         <?php } ?>
                             </select>
                         </div>

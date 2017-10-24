@@ -25,7 +25,7 @@
             if(sizeof($type)>0){
                 foreach($type as $s){ ?>
             <tr>
-                <td><?php echo $s->type_name; ?></td>
+                <td><?php echo $s->ads_type_name; ?></td>
                 <td><?php echo $s->vendor_name; ?></td>
                 <td>
                     <a type="button" href="<?php echo base_url().'core/edittype/'.$s->ads_type_id; ?>" class="btn-sm btn-primary">Edit</a>

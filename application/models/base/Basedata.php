@@ -102,7 +102,7 @@ class Basedata extends CI_Model {
     public function setType($post){
         $cek=$this->getType($post['idRec']);
         $data = array(
-            'type_name'=>$post['type_name'],
+            'ads_type_name'=>$post['type_name'],
             'vendor_id'=>$post['vendor_id']
         );
         if(sizeof($cek)==0){
@@ -127,6 +127,21 @@ class Basedata extends CI_Model {
         $query=$this->db->query("SELECT * FROM as_vendor
                 $where ORDER BY vendor_id DESC");
         return $query->result();
+    }
+    public function setVendor($post){
+        $cek=$this->getVendor($post['idRec']);
+        $data = array(
+            'vendor_name'=>$post['vendor_name']
+        );
+        if(sizeof($cek)==0){
+            $this->db->insert('as_vendor',$data);
+        }else{
+            $this->db->where('vendor_id', $post['idRec']);
+            $this->db->update('as_vendor', $data);
+        }
+    }
+    public function delVendor($id){
+        $this->db->query("DELETE FROM as_vendor WHERE vendor_id='$id'");
     }
     /*---------------------end vendor---------------*/
     

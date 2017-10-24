@@ -122,6 +122,15 @@ class Core extends Main_Controller {
         $this->data['vendor']=$this->basedata->getVendor($id);
         $this->tempe->load($this->theme.'/modul',$this->theme.'/type/form',$this->data);
     }
+    public function edittype(){
+        $rec=$this->basedata->getType($this->record);
+        $this->data['headtitle']="Ads Type";
+        $this->data['menu_id']="23";
+        $this->data['rec']=$rec;
+        $id="all";
+        $this->data['vendor']=$this->basedata->getVendor($id);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/type/form',$this->data);
+    }
     public function savetype(){
         $post=$this->input->post();
         $this->data['headtitle']="Ads Type";
@@ -145,11 +154,43 @@ class Core extends Main_Controller {
     /*--------------vendor-----------------------------*/
     public function vendor(){
         $this->data['headtitle']="Vendor";
-        $this->data['menu_id']="9";
+        $this->data['menu_id']="25";
         $this->data['parent']="9";
         $id="all";
         $this->data['vendor']=$this->basedata->getVendor($id);
         $this->tempe->load($this->theme.'/modul',$this->theme.'/vendor/vendor',$this->data);
+    }
+    public function addvendor(){
+        $this->data['headtitle']="Vendor";
+        $this->data['menu_id']="25";
+        $this->data['rec']=array();
+        $id="all";
+        $this->data['vendor']=$this->basedata->getVendor($id);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/vendor/form',$this->data);
+    }
+    public function editvendor(){
+        $rec=$this->basedata->getVendor($this->record);
+        $this->data['headtitle']="Vendor";
+        $this->data['menu_id']="25";
+        $this->data['rec']=$rec;
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/vendor/form',$this->data);
+    }
+    public function savevendor(){
+        $post=$this->input->post();
+        $this->data['headtitle']="Vendor";
+        $this->data['menu_id']="25";
+        $this->data['rec']=array();
+        $this->form_validation->set_rules('vendor_name', 'Vendor Name', 'required');
+        if ($this->form_validation->run() == FALSE){
+            $this->tempe->load($this->theme.'/modul',$this->theme.'/vendor/form',$this->data);
+        }else{
+            $this->basedata->setvendor($post);
+            redirect('core/vendor', 'refresh');
+        }
+    }
+    public function remvendor(){
+        $this->basedata->delVendor($this->record);
+        redirect('core/vendor', 'refresh');
     }
     /*--------------end vendor-----------------------------*/
     

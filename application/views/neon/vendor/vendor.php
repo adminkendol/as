@@ -8,7 +8,7 @@
     <div class="panel-body">
         <div class="form-group">
             <div>
-                <a type="button" href="<?php echo base_url().'core/addvendor/'; ?>" class="btn btn-blue pull-right">Vendor</a>
+                <a type="button" href="<?php echo base_url().'core/addvendor/'; ?>" class="btn btn-blue pull-right">Add Vendor</a>
             </div>
         </div>
     </div>
@@ -24,10 +24,10 @@
             if(sizeof($vendor)>0){
                 foreach($vendor as $ven){ ?>
             <tr>
-                <td><?php echo $s->vendor_name; ?></td>
+                <td><?php echo $ven->vendor_name; ?></td>
                 <td>
-                    <a type="button" href="<?php echo base_url().'core/editvendor/'.$s->vendor_id; ?>" class="btn-sm btn-primary">Edit</a>
-                    <a type="button" href="<?php echo base_url().'core/remvendor/'.$s->vendor_id; ?>" class="btn-sm btn-danger">Remove</a>
+                    <a type="button" href="<?php echo base_url().'core/editvendor/'.$ven->vendor_id; ?>" class="btn-sm btn-primary">Edit</a>
+                    <a type="button" href="<?php echo base_url().'core/remvendor/'.$ven->vendor_id; ?>" class="btn-sm btn-danger">Remove</a>
                 </td>
             </tr>
             <?php 
