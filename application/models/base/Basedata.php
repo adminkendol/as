@@ -85,7 +85,50 @@ class Basedata extends CI_Model {
     public function delUser($id){
         $this->db->query("DELETE FROM as_user WHERE id='$id'");
     }
-    /*---------------------end kategori---------------*/
+    /*---------------------end user---------------*/
+    
+    /*---------------------type---------------*/
+    public function getType($id){
+        if($id!="all"){
+            $where="WHERE aat.ads_type_id='$id'";
+        }else{
+            $where="";
+        }
+        $query=$this->db->query("SELECT aat.*,av.vendor_name FROM as_ads_type aat 
+                INNER JOIN as_vendor av ON av.vendor_id=aat.vendor_id
+                $where ORDER BY aat.ads_type_id DESC");
+        return $query->result();
+    }
+    public function setType($post){
+        $cek=$this->getType($post['idRec']);
+        $data = array(
+            'type_name'=>$post['type_name'],
+            'vendor_id'=>$post['vendor_id']
+        );
+        if(sizeof($cek)==0){
+            $this->db->insert('as_ads_type',$data);
+        }else{
+            $this->db->where('ads_type_id', $post['idRec']);
+            $this->db->update('as_ads_type', $data);
+        }
+    }
+    public function delType($id){
+        $this->db->query("DELETE FROM as_ads_type WHERE ads_type_id='$id'");
+    }
+    /*---------------------end type---------------*/
+    
+    /*---------------------vendor---------------*/
+    public function getVendor($id){
+        if($id!="all"){
+            $where="WHERE vendor_id='$id'";
+        }else{
+            $where="";
+        }
+        $query=$this->db->query("SELECT * FROM as_vendor
+                $where ORDER BY vendor_id DESC");
+        return $query->result();
+    }
+    /*---------------------end vendor---------------*/
     
     /*---------------------dashboard---------------*/
     function getDashBeliM(){

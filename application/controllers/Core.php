@@ -105,6 +105,43 @@ class Core extends Main_Controller {
     }
     /*--------------end user-----------------------------*/
     
+    /*--------------type-----------------------------*/
+    public function type(){
+        $this->data['headtitle']="Ads Type";
+        $this->data['menu_id']="23";
+        $this->data['parent']="9";
+        $id="all";
+        $this->data['type']=$this->basedata->getType($id);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/type/type',$this->data);
+    }
+    public function addtype(){
+        $this->data['headtitle']="Ads Type";
+        $this->data['menu_id']="23";
+        $this->data['rec']=array();
+        $id="all";
+        $this->data['vendor']=$this->basedata->getVendor($id);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/type/form',$this->data);
+    }
+    public function savetype(){
+        $post=$this->input->post();
+        $this->data['headtitle']="Ads Type";
+        $this->data['menu_id']="23";
+        $this->data['rec']=array();
+        $this->form_validation->set_rules('type_name', 'Type Name', 'required');
+        $this->form_validation->set_rules('vendor_id', 'vendor', 'required');
+        if ($this->form_validation->run() == FALSE){
+            $this->tempe->load($this->theme.'/modul',$this->theme.'/type/form',$this->data);
+        }else{
+            $this->basedata->settype($post);
+            redirect('core/type', 'refresh');
+        }
+    }
+    public function remtype(){
+        $this->basedata->delType($this->record);
+        redirect('core/type', 'refresh');
+    }
+    /*--------------end type-----------------------------*/
+    
     /*---------------------dashboard--------------------------------*/
     public function dashboard(){
         $this->data['headtitle']="Dashboard";
