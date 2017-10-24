@@ -142,6 +142,17 @@ class Core extends Main_Controller {
     }
     /*--------------end type-----------------------------*/
     
+    /*--------------vendor-----------------------------*/
+    public function vendor(){
+        $this->data['headtitle']="Vendor";
+        $this->data['menu_id']="9";
+        $this->data['parent']="9";
+        $id="all";
+        $this->data['vendor']=$this->basedata->getVendor($id);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/vendor/vendor',$this->data);
+    }
+    /*--------------end vendor-----------------------------*/
+    
     /*---------------------dashboard--------------------------------*/
     public function dashboard(){
         $this->data['headtitle']="Dashboard";
