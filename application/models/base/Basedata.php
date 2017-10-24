@@ -15,10 +15,10 @@ class Basedata extends CI_Model {
         return $query->result();
     }
     
-    /*---------------------customer---------------*/
+    /*---------------------client---------------*/
     public function getCust($id,$batas,$offset){
         if($id!="all"){
-            $where="WHERE cus.id='$id'";
+            $where="WHERE ac.client_id='$id'";
         }else{
             $where="";
         }
@@ -27,38 +27,36 @@ class Basedata extends CI_Model {
         }else{
             $limit="LIMIT $offset,$batas";
         }
-        $query=$this->db->query("SELECT cus.*
-                FROM customer cus
-                $where ORDER BY id DESC $limit");
+        $query=$this->db->query("SELECT ac.*
+                FROM as_client ac
+                $where ORDER BY ac.client_id DESC $limit");
         return $query->result();
     }
     public function count_cust(){
-        $query = $this->db->get("customer")->num_rows();
+        $query = $this->db->get("as_client")->num_rows();
         return $query;
     }
-    public function setCustomer($post){
+    public function setClient($post){
         $batas="";
         $offset="";
         $cek=$this->getCust($post['idRec'],$batas,$offset);
         $data = array(
-            'customer'=>$post['customer'],
-            'ktp'=>$post['ktp'],
-            'alamat'=>$post['alamat'],
-            'phone1'=>$post['phone1'],
-            'phone2'=>$post['phone2'],
+            'client_name'=>$post['client_name'],
+            'phone_number'=>$post['phone_number'],
+            'address'=>$post['address'],
             'email'=>$post['email']
         );
         if(sizeof($cek)==0){
-            $this->db->insert('customer',$data);
+            $this->db->insert('as_client',$data);
         }else{
-            $this->db->where('id', $post['idRec']);
-            $this->db->update('customer', $data);
+            $this->db->where('client_id', $post['idRec']);
+            $this->db->update('as_client', $data);
         }
     }
-    public function delCustomer($id){
-        $this->db->query("DELETE FROM customer WHERE id='$id'");
+    public function delClient($id){
+        $this->db->query("DELETE FROM as_client WHERE client_id='$id'");
     }
-    /*---------------------end customer---------------*/
+    /*---------------------end client---------------*/
     
     /*---------------------user---------------*/
     public function getUser($id){

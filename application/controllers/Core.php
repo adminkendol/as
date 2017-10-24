@@ -10,12 +10,12 @@ class Core extends Main_Controller {
         $this->dashboard();
     }
     
-    /*--------------customer-----------------------------*/
-    public function customer(){
-        $this->data['headtitle']="Customer";
+    /*--------------clients-----------------------------*/
+    public function clients(){
+        $this->data['headtitle']="Clients";
         $this->data['menu_id']="13";
         $id="all";
-        $this->settings['base_url'] = site_url('core/customer');
+        $this->settings['base_url'] = site_url('core/clients');
         $this->settings['total_rows'] = $this->basedata->count_cust();
         $choice = $this->settings["total_rows"] / $this->settings["per_page"];
         $this->settings["num_links"] = floor($choice);
@@ -23,44 +23,44 @@ class Core extends Main_Controller {
         $this->data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $this->data['pagination'] = $this->pagination->create_links();
         $this->data['customer']=$this->basedata->getCust($id,$this->settings["per_page"], $this->data['page']);
-        $this->tempe->load($this->theme.'/modul',$this->theme.'/customer/customer',$this->data);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/clients/clients',$this->data);
     }
-    public function addcustomer(){
-        $this->data['headtitle']="Customer";
+    public function addclient(){
+        $this->data['headtitle']="Clients";
         $this->data['menu_id']="13";
         $this->data['rec']=array();
         $id="all";
-        $this->tempe->load($this->theme.'/modul',$this->theme.'/customer/form',$this->data);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/clients/form',$this->data);
     }
-    public function savecustomer(){
+    public function saveclient(){
         $post=$this->input->post();
-        $this->data['headtitle']="customer";
+        $this->data['headtitle']="Clients";
         $this->data['menu_id']="13";
         $this->data['rec']=array();
         $id="all";
-        $this->form_validation->set_rules('customer', 'Nama Customer', 'required');
+        $this->form_validation->set_rules('client_name', 'Client Name', 'required');
         if ($this->form_validation->run() == FALSE){
-            $this->tempe->load($this->theme.'/modul',$this->theme.'/customer/form',$this->data);
+            $this->tempe->load($this->theme.'/modul',$this->theme.'/clients/form',$this->data);
         }else{
-            $this->basedata->setBarang($post);
-            redirect('core/customer', 'refresh');
+            $this->basedata->setClient($post);
+            redirect('core/clients', 'refresh');
         }
     }
-    public function editcustomer(){
+    public function editclient(){
         $batas="";
         $offset="";
         $rec=$this->basedata->getCust($this->record,$batas,$offset);
-        $this->data['headtitle']="Customer";
+        $this->data['headtitle']="Clients";
         $this->data['menu_id']="13";
         $this->data['rec']=$rec;
         $id="all";
-        $this->tempe->load($this->theme.'/modul',$this->theme.'/customer/form',$this->data);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/clients/form',$this->data);
     }
-    public function remcustomer(){
-        $this->basedata->delCustomer($this->record);
-        redirect('core/customer', 'refresh');
+    public function remclient(){
+        $this->basedata->delClient($this->record);
+        redirect('core/clients', 'refresh');
     }
-    /*--------------end customer-----------------------------*/
+    /*--------------end clients-----------------------------*/
     
     /*--------------user-----------------------------*/
     public function user(){
