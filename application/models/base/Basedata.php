@@ -32,6 +32,12 @@ class Basedata extends CI_Model {
                 $where ORDER BY ac.client_id DESC $limit");
         return $query->result();
     }
+    public function getClientApi($name){
+        $query=$this->db->query("SELECT ac.*
+                FROM as_client ac
+                WHERE ac.client_name LIKE '%$name%' ORDER BY ac.client_id DESC");
+        return $query->result();
+    }
     public function count_cust(){
         $query = $this->db->get("as_client")->num_rows();
         return $query;
@@ -172,6 +178,22 @@ class Basedata extends CI_Model {
         $this->db->query("DELETE FROM as_ads_size WHERE ads_size_id='$id'");
     }
     /*---------------------end size---------------*/
+    
+    /*---------------------content---------------*/
+    public function getCont($id){
+        if($id!="all"){
+            $where="WHERE ads_content_id='$id'";
+        }else{
+            $where="";
+        }
+        $query=$this->db->query("SELECT aac.*,aat.ads_type_name AS type,aas.ads_size_name AS size,ac.client_name AS client FROM as_ads_content aac
+                INNER JOIN as_ads_type aat ON aat.ads_type_id=aac.ads_type_id
+                INNER JOIN as_ads_size aas ON aas.ads_size_id=aac.ads_size_id
+                INNER JOIN as_client ac ON ac.client_id=aac.client_id
+                $where ORDER BY ads_content_id DESC");
+        return $query->result();
+    }
+    /*---------------------end content---------------*/
     
     /*---------------------dashboard---------------*/
     function getDashBeliM(){

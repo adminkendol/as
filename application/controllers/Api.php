@@ -16,9 +16,9 @@ class Api extends CI_Controller {
         $this->config->load('config', true);
         $this->server = $this->config->item('server_url');
     }
-    public function customer(){
+    public function client(){
         $name=$this->input->post('name');
-        $data=$this->basedata->getCustomer($name);
+        $data=$this->basedata->getClientApi($name);
         echo json_encode($data);
     }
     

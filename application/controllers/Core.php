@@ -237,6 +237,26 @@ class Core extends Main_Controller {
     }
     /*--------------end size-----------------------------*/
     
+    /*--------------content-----------------------------*/
+    public function content(){
+        $this->data['headtitle']="Ads Content";
+        $this->data['menu_id']="21";
+        $this->data['parent']="";
+        $id="all";
+        $this->data['content']=$this->basedata->getCont($id);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/content/content',$this->data);
+    }
+    public function addcontent(){
+        $this->data['headtitle']="Ads Content";
+        $this->data['menu_id']="21";
+        $this->data['rec']=array();
+        $id="all";
+        $this->data['size']=$this->basedata->getSize($id);
+        $this->data['type']=$this->basedata->getType($id);
+        $this->data['client']=$this->basedata->getCust($id,"","");
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/content/form',$this->data);
+    }
+    /*--------------end content-----------------------------*/
     
     /*---------------------dashboard--------------------------------*/
     public function dashboard(){

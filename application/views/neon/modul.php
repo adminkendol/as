@@ -253,8 +253,44 @@
             var legend = '';
             charts.bar(datasA,dom,judul,pointer,legend);
         }
+        $('#client').typeahead({
+            items: 4,
+            autoSelect: true,
+            source: function (query, process) {
+                            $.ajax({
+                                url: '<?php echo base_url()."api/client"; ?>',
+                                type: 'POST',
+                                dataType: 'JSON',
+                                data: 'name=' + query,
+                                success: function(data) {
+                                    console.log(data);
+                                    process(data);
+                                    
+                                }
+                            });
+                        },
+            displayText: function(item) {
+                            return item.client_name+" | Phone : "+item.phone_number;
+            },
+            afterSelect: function(item) {
+                            $("#client_id").val(item.client_id);
+                            $("#client").val(item.client_name);
+                         }
+        });
     });
-    
+    $('#type_id').change(function() {
+        if($('#type_id').val()=="1"){
+           $('#div_size_id').hide(); 
+           $('#div_title1').hide(); 
+           $('#div_title2').hide();
+           $('#div_desc').hide(); 
+        }else{
+            $('#div_size_id').show(); 
+            $('#div_title1').show(); 
+            $('#div_title2').show();
+            $('#div_desc').show(); 
+        }
+    });
 </script>
 
 </body>
