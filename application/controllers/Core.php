@@ -253,8 +253,46 @@ class Core extends Main_Controller {
         $id="all";
         $this->data['size']=$this->basedata->getSize($id);
         $this->data['type']=$this->basedata->getType($id);
-        $this->data['client']=$this->basedata->getCust($id,"","");
         $this->tempe->load($this->theme.'/modul',$this->theme.'/content/form',$this->data);
+    }
+    public function editcontent(){
+        $rec=$this->basedata->getCont($this->record);
+        $this->data['headtitle']="Ads Content";
+        $this->data['menu_id']="21";
+        $this->data['rec']=$rec;
+        $id="all";
+        $this->data['size']=$this->basedata->getSize($id);
+        $this->data['type']=$this->basedata->getType($id);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/content/form',$this->data);
+    }
+    public function savecontent(){
+        $post=$this->input->post();
+        $this->data['headtitle']="Ads Content";
+        $this->data['menu_id']="21";
+        $this->data['rec']=array();
+        $this->form_validation->set_rules('content_name', 'Content Name', 'required');
+        $this->form_validation->set_rules('type_id', 'Type', 'required');
+        $this->form_validation->set_rules('client', 'Client', 'required');
+        $id="all";
+        $this->data['size']=$this->basedata->getSize($id);
+        $this->data['type']=$this->basedata->getType($id);
+        
+        if($this->input->post('type_id')=="1"){
+            $this->form_validation->set_rules('size_id', 'Size', 'required');
+            $this->form_validation->set_rules('title1', 'Title 1', 'required');
+            $this->form_validation->set_rules('title2', 'Title 2', 'required');
+            $this->form_validation->set_rules('desc', 'Description', 'required');
+        }
+        if ($this->form_validation->run() == FALSE){
+            $this->tempe->load($this->theme.'/modul',$this->theme.'/content/form',$this->data);
+        }else{
+            $this->basedata->setsize($post);
+            redirect('core/content', 'refresh');
+        }
+    }
+    public function remcontent(){
+        $this->basedata->delContent($this->record);
+        redirect('core/content', 'refresh');
     }
     /*--------------end content-----------------------------*/
     

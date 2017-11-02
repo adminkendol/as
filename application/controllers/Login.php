@@ -28,7 +28,8 @@ class Login extends CI_Controller {
         $this->data['menu']=$this->menu;
         $this->data['menu_id']="0";
         $this->data['valid']="0";
-        $this->tempe->load($this->theme.'/modul',$this->theme.'/login',$this->data);
+        //$this->tempe->load($this->theme.'/modul',$this->theme.'/login',$this->data);
+        $this->load->view('default/login',$this->data);
     }
     public function enter(){
         $this->data['title']=$this->title;
