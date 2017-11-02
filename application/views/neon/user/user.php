@@ -8,7 +8,7 @@
     <div class="panel-body">
         <div class="form-group">
             <div>
-                <a type="button" href="<?php echo base_url().'core/adduser/'; ?>" class="btn btn-blue pull-right">Tambah User</a>
+                <a type="button" href="<?php echo base_url().'core/adduser/'; ?>" class="btn btn-blue pull-right">Add User</a>
             </div>
         </div>
     </div>
@@ -17,6 +17,8 @@
             <tr>
                 <th>Nama</th>
                 <th>Username</th>
+                <th>Role</th>
+                <th>Client</th>
                 <th></th>
             </tr>
         </thead>
@@ -25,6 +27,8 @@
             <tr>
                 <td><?php echo $s->nama; ?></td>
                 <td><?php echo $s->username; ?></td>
+                <td><?php echo $s->role_name; ?></td>
+                <td><?php echo $s->client_name; ?></td>
                 <td>
                     <a type="button" href="<?php echo base_url().'core/edituser/'.$s->id; ?>" class="btn-sm btn-primary">Edit</a>
                     <a type="button" href="<?php echo base_url().'core/remuser/'.$s->id; ?>" class="btn-sm btn-danger">Hapus</a>

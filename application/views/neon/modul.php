@@ -291,6 +291,13 @@
             $('#div_desc').show(); 
         }
     });
+    $('#role_id').change(function() {
+        if($('#role_id').val()=="1"){
+            $('#div_client_id').hide(); 
+        }else{
+            $('#div_client_id').show();
+        }
+    });
 </script>
 
 </body>

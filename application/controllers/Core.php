@@ -4,7 +4,7 @@ class Core extends Main_Controller {
  
     function __construct(){
         parent::__construct();
-	
+	$this->load->library('ussd');
     }
     function index(){	
         $this->dashboard();
@@ -75,6 +75,7 @@ class Core extends Main_Controller {
         $this->data['headtitle']="User";
         $this->data['menu_id']="14";
         $this->data['rec']=array();
+        $this->data['role']=$this->basedata->getRole();
         $this->tempe->load($this->theme.'/modul',$this->theme.'/user/form',$this->data);
     }
     public function saveuser(){
@@ -85,7 +86,9 @@ class Core extends Main_Controller {
         $this->form_validation->set_rules('name', 'Nama', 'required');
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('role_id', 'Role', 'required');
         if ($this->form_validation->run() == FALSE){
+            $this->data['role']=$this->basedata->getRole();
             $this->tempe->load($this->theme.'/modul',$this->theme.'/user/form',$this->data);
         }else{
             $this->basedata->setUser($post);
@@ -304,6 +307,10 @@ class Core extends Main_Controller {
     }
     
     /*---------------------end dashboard--------------------------------*/
+    
+    public function platform(){
+        echo $this->ussd->test();
+    }
     
     public function error(){
         $this->data['headtitle']="Error";

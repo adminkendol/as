@@ -3,10 +3,16 @@ if(sizeof($rec)==0){
     $idRec=set_value('idRec');
     $name=set_value('name');
     $username=set_value('username');
+    $role_id=set_value('role_id');
+    $client_id=set_value('client_id');
+    $client_name=set_value('client_name');
 }else{
     $idRec=$rec[0]->id;
     $name=$rec[0]->nama;
     $username=$rec[0]->username;
+    $role_id=$rec[0]->role_id;
+    $client_id=$rec[0]->client_id;
+    $client_name=$rec[0]->client_name;
 }
 ?>
 <div class="row">
@@ -47,6 +53,30 @@ if(sizeof($rec)==0){
                         <label class="col-sm-3 control-label">Password</label>
                         <div class="col-sm-5">
                             <input type="password" class="form-control" name="password" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Role</label>
+                        <div class="col-sm-5">
+                            <select class="form-control" name="role_id" id="role_id">
+                                <option value=""></option>
+                                        <?php foreach($role as $r){ 
+                                            if($r->role_id==$role_id){
+                                                $selected="selected";
+                                            }else{
+                                                $selected="";
+                                            }
+                                            ?>
+                                <option value="<?php echo $r->role_id; ?>" <?php echo $selected; ?>><?php echo $r->role_name; ?></option>
+                                        <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="div_client_id" style="display: none">
+                        <label class="col-sm-3 control-label">Client</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="client" id="client" value="<?php echo $client_name; ?>">
+                            <input type="hidden" name="client_id" id="client_id" value="<?php echo $client_id; ?>">
                         </div>
                     </div>
                     <div class="form-group">

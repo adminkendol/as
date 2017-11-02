@@ -71,7 +71,10 @@ class Basedata extends CI_Model {
         }else{
             $where="";
         }
-        $query=$this->db->query("SELECT * FROM as_user $where ORDER BY id DESC");
+        $query=$this->db->query("SELECT au.*,ar.role_name,ac.client_name FROM as_user au 
+                LEFT JOIN as_role ar ON ar.role_id=au.role_id
+                LEFT JOIN as_client ac ON ac.client_id=au.client_id
+                $where ORDER BY id DESC");
         return $query->result();
     }
     public function setUser($post){
@@ -79,7 +82,9 @@ class Basedata extends CI_Model {
         $data = array(
             'nama'=>$post['name'],
             'username'=>$post['username'],
-            'password'=>md5($post['password'])
+            'password'=>md5($post['password']),
+            'role_id'=>$post['role_id'],
+            'client_id'=>$post['client_id']
         );
         if(sizeof($cek)==0){
             $this->db->insert('as_user',$data);
@@ -194,6 +199,13 @@ class Basedata extends CI_Model {
         return $query->result();
     }
     /*---------------------end content---------------*/
+    
+    /*---------------------role---------------*/
+    public function getRole(){
+        $query=$this->db->query("SELECT * FROM as_role");
+        return $query->result();
+    }
+    /*---------------------end role---------------*/
     
     /*---------------------dashboard---------------*/
     function getDashBeliM(){
