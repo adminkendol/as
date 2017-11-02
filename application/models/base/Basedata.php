@@ -253,7 +253,7 @@ class Basedata extends CI_Model {
     /*-----------------------login------------------*/
     public function cekLogin($post){
         $pass=md5($post['password']);
-        $query=$this->db->query("SELECT id,nama,role
+        $query=$this->db->query("SELECT id,nama,role_id
         FROM as_user
         WHERE username='$post[username]'
         AND password='$pass'");
