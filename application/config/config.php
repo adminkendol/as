@@ -30,6 +30,7 @@ $config['base_url'] .=  str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVE
 $config['title']="Active Screen";
 //$config['theme']="default";
 $config['theme']="neon";
+
 /*
 |--------------------------------------------------------------------------
 | Index File

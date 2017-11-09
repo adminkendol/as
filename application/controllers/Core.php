@@ -4,7 +4,8 @@ class Core extends Main_Controller {
  
     function __construct(){
         parent::__construct();
-	$this->load->library('ussd');
+	//$this->load->library('platform');
+        $this->load->library('curl');
     }
     function index(){	
         $this->dashboard();
@@ -298,6 +299,100 @@ class Core extends Main_Controller {
         redirect('core/content', 'refresh');
     }
     /*--------------end content-----------------------------*/
+    
+    /*--------------platform-----------------------------*/
+    public function ussd(){
+        $this->data['headtitle']="USSD";
+        $this->data['menu_id']="17";
+        $this->data['parent']="";
+        $this->data['umb']=$this->basedata->getRbt();
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/platform/form',$this->data);
+    }
+    public function ussdcamp(){
+        $this->data['headtitle']="USSD";
+        $this->data['menu_id']="17";
+        $this->data['parent']="";
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/platform/form_camp',$this->data);
+    }
+    public function sendussd(){
+        $post=$this->input->post();
+        $dest=$this->input->post('phone');
+        $umb_id=$this->input->post('umb_id');
+        $this->form_validation->set_rules('phone', 'Phone Number', 'required');
+        $this->form_validation->set_rules('umb_id', 'UMB', 'required');
+        
+        //print_r($response);
+        
+        if ($this->form_validation->run() == FALSE){
+            $this->data['headtitle']="USSD";
+            $this->data['menu_id']="17";
+            $this->data['parent']="";
+            $this->data['umb']=$this->basedata->getRbt();
+            $this->tempe->load($this->theme.'/modul',$this->theme.'/platform/form',$this->data);
+        }else{
+            $post='{"request" : {"destination" : "'.$dest.'","menu" : "'.$umb_id.'"}}';
+            $token=$this->gettoken();
+            $response=exec("curl -X POST 'https://intapi.dsmart.id:8243/messaging/1.0.0/ussd/menu' -d '$post' -H 'Content-Type:application/json' -H 'Authorization:Bearer $token'");
+            //print_r($response);die;
+            $response= (array) json_decode($response);
+            //print_r($response['response']['status']);die;
+            redirect('core/ussd', 'refresh');
+        }
+    }
+    public function sendussdcamp(){
+        $config['upload_path'] = FCPATH.'temp/';
+        $config['allowed_types'] = 'xls';
+        $config['max_size'] = '10000';
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('filephone');	
+        
+        $upload_data = $this->upload->data();
+        $this->load->library('Excel_reader');
+        //$this->excel_reader->setOutputEncoding('230787');
+        $file = $upload_data['full_path'];
+        exec('chmod 777 -R '.$file);
+        $this->excel_reader->read($file);
+        error_reporting(E_ALL ^ E_NOTICE);
+        
+        $data = $this->excel_reader->sheets[0];
+        unlink($file);
+        //print_r(json_encode($data['cells']));die;
+        $link=$this->input->post('link');
+        for($i=2;sizeof($data['cells']<$i);$i++){
+            //print_r ($data['cells'][$i][2]."<br>");
+            if($data['cells'][$i][2]==""){
+                break;
+            }
+            $response=$this->exeussd($data['cells'][$i][2],$link);
+            //$response="success";
+            $post['type']='1';
+            $post['msisdn']=$data['cells'][$i][2];
+            $post['content']=$link;
+            $post['push_date']=date('Y-m-d H:i:s');
+            $post['status']=$response;
+            $this->basedata->setTransac($post);
+        }
+        redirect('core/ussdcamp', 'refresh');
+    }
+    public function gettoken(){
+        $url = 'https://intapi.dsmart.id:8243/token';
+        $header=array(
+            'Authorization'=>'Basic NU16U2VDZXJzMzRaNUljS1hyQ0JBb2FUWDdjYTpwYm9DTUo3RGFqU19ObzFNNmVnRXF1amN2U0Fh'
+        );
+        $response=exec("curl  -X POST 'https://intapi.dsmart.id:8243/token?grant_type=password&username=sinergibestama&password=s1n3rg!B3st4m41nd0n3s!4' -H 'Authorization:Basic NU16U2VDZXJzMzRaNUljS1hyQ0JBb2FUWDdjYTpwYm9DTUo3RGFqU19ObzFNNmVnRXF1amN2U0Fh'");
+        $response= (array) json_decode($response);
+        return $response['access_token'] ;
+    }
+    public function exeussd($dest,$umb_id){
+        $post='{"request" : {"destination" : "'.$dest.'","menu" : "'.$umb_id.'"}}';
+        $token=$this->gettoken();
+        $response=exec("curl -X POST 'https://intapi.dsmart.id:8243/messaging/1.0.0/ussd/menu' -d '$post' -H 'Content-Type:application/json' -H 'Authorization:Bearer $token'");
+        //print_r($post."|".$response);die;
+        $response= (array) json_decode($response);
+        return $response['response']['status'];
+    }
+    /*--------------end platform-----------------------------*/
+    
     
     /*---------------------dashboard--------------------------------*/
     public function dashboard(){

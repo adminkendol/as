@@ -69,6 +69,17 @@
                                     <a href="<?php echo base_url()."core/".$mm->url; ?>">
                                         <span class="title"><?php echo $mm->menu_name; ?></span>
                                     </a>
+                                    <?php foreach($menu as $mmm){ 
+                                        if($mmm->parent==$mm->menu_id){ ?>
+                                    <ul>
+                                        <li>
+                                            <a href="<?php echo base_url()."core/".$mmm->url; ?>">
+                                                <span class="title"><?php echo $mmm->menu_name; ?></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <?php }
+                                    } ?>
 				</li>
                             </ul>
                         <?php }

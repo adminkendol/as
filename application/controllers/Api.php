@@ -21,6 +21,25 @@ class Api extends CI_Controller {
         $data=$this->basedata->getClientApi($name);
         echo json_encode($data);
     }
-    
+    public function gettoken(){
+        $url = 'https://intapi.dsmart.id:8243/token';
+        $header=array(
+            'Authorization'=>'Basic NU16U2VDZXJzMzRaNUljS1hyQ0JBb2FUWDdjYTpwYm9DTUo3RGFqU19ObzFNNmVnRXF1amN2U0Fh'
+        );
+        $response=exec("curl  -X POST 'https://intapi.dsmart.id:8243/token?grant_type=password&username=sinergibestama&password=s1n3rg!B3st4m41nd0n3s!4' -H 'Authorization:Basic NU16U2VDZXJzMzRaNUljS1hyQ0JBb2FUWDdjYTpwYm9DTUo3RGFqU19ObzFNNmVnRXF1amN2U0Fh'");
+        $response= (array) json_decode($response);
+        return $response['access_token'] ;
+    }
+    public function sendussd(){
+        $dest=$this->input->post('phone');
+        $umb_id=$this->input->post('umb_id');
+        
+        $post='{"request" : {"destination" : "'.$dest.'","menu" : "'.$umb_id.'"}}';
+        $token=$this->gettoken();
+        $response=exec("curl -X POST 'https://intapi.dsmart.id:8243/messaging/1.0.0/ussd/menu' -d '$post' -H 'Content-Type:application/json' -H 'Authorization:Bearer $token'");
+        
+        $response= (array) json_decode($response);
+        echo $response['response']['status'];
+    }
     
 }    

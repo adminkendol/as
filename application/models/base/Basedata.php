@@ -11,7 +11,7 @@ class Basedata extends CI_Model {
 	parent::__construct();
     }
     public function getMenu(){
-        $query=$this->db->query("SELECT * FROM as_menu ORDER BY sort ASC");
+        $query=$this->db->query("SELECT * FROM as_menu WHERE status_id='1' ORDER BY sort ASC");
         return $query->result();
     }
     
@@ -206,6 +206,32 @@ class Basedata extends CI_Model {
         return $query->result();
     }
     /*---------------------end role---------------*/
+    
+    public function getRbt(){
+        $query=$this->db->query("SELECT * FROM as_rbt");
+        return $query->result();
+    }
+    /*----------------------trasaction-----------------*/
+    public function setTransac($post){
+        $getId=$this->db->query("SELECT transaction_id FROM as_transaction ORDER BY push_date DESC limit 1");
+        $num=$getId->result()[0]->transaction_id;
+        $id = substr(trim($num), -1);
+        $id = (int) $id+1;
+        $dateA=date('Ymd');
+        $dateB=date('His');
+        $transaction_id=$dateA.$dateB.$id;
+        $data = array(
+            'transaction_id'=>$transaction_id,
+            'ads_type_id'=>$post['type'],
+            'msisdn'=>$post['msisdn'],
+            'content'=>$post['content'],
+            'push_date'=>$post['push_date'],
+            'status'=>$post['status']
+        );
+        $this->db->insert('as_transaction',$data);
+    }
+    /*----------------------end trasaction-----------------*/
+    
     
     /*---------------------dashboard---------------*/
     function getDashBeliM(){

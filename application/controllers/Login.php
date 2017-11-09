@@ -28,8 +28,8 @@ class Login extends CI_Controller {
         $this->data['menu']=$this->menu;
         $this->data['menu_id']="0";
         $this->data['valid']="0";
-        //$this->tempe->load($this->theme.'/modul',$this->theme.'/login',$this->data);
-        $this->load->view('default/login',$this->data);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/login',$this->data);
+        //$this->load->view('default/login',$this->data);
     }
     public function enter(){
         $this->data['title']=$this->title;
@@ -49,7 +49,7 @@ class Login extends CI_Controller {
                 $arraydata = array(
                     'id'  => $result[0]->id,
                     'nama'  => $result[0]->nama,
-                    'role'  => $result[0]->role
+                    'role'  => $result[0]->role_id
                 );
                 $this->session->set_userdata($arraydata);
                 redirect('core/dashboard', 'refresh');
