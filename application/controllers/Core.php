@@ -363,7 +363,8 @@ class Core extends Main_Controller {
             if($data['cells'][$i][2]==""){
                 break;
             }
-            $response=$this->exeussd($data['cells'][$i][2],$link);
+            //$response=$this->exeussd($data['cells'][$i][2],$link);
+            $response=$this->exeussdstag($data['cells'][$i][2],$link);
             //$response="success";
             $post['type']='1';
             $post['msisdn']=$data['cells'][$i][2];
@@ -390,6 +391,10 @@ class Core extends Main_Controller {
         //print_r($post."|".$response);die;
         $response= (array) json_decode($response);
         return $response['response']['status'];
+    }
+    public function exeussdstag($dest,$umb_id){
+        $response=exec("curl -X POST  http://117.54.3.24:1282/api/sendussd/  -d phone='$dest'  -d 'umb_id=$umb_id'");
+        return $response;
     }
     /*--------------end platform-----------------------------*/
     

@@ -39,7 +39,7 @@ class Api extends CI_Controller {
         $response=exec("curl -X POST 'https://intapi.dsmart.id:8243/messaging/1.0.0/ussd/menu' -d '$post' -H 'Content-Type:application/json' -H 'Authorization:Bearer $token'");
         
         $response= (array) json_decode($response);
-        echo $response['response']['status'];
+        print_r($response['response']->status) ;
     }
     
 }    
