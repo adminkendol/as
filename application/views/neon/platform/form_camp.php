@@ -25,6 +25,13 @@
                             </div>
                         <?php    
                         }
+                        if(($this->session->userdata('success'))||($this->session->userdata('fail'))) { ?>
+                            <div class="alert alert-success">
+                                <button type="button" aria-hidden="true" class="close">×</button>
+                                <span>Success sent: <?php echo $this->session->userdata('success'); ?></span><br>
+                                <span>Fail sent: <?php echo $this->session->userdata('fail'); ?></span>
+                            </div>
+                        <?php }
                         ?>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Upload Phone Number</label>

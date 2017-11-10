@@ -356,8 +356,11 @@ class Core extends Main_Controller {
         
         $data = $this->excel_reader->sheets[0];
         unlink($file);
+        //print_r($upload_data);die;
         //print_r(json_encode($data['cells']));die;
         $link=$this->input->post('link');
+        $suc=0;
+        $fail=0;
         for($i=2;sizeof($data['cells']<$i);$i++){
             //print_r ($data['cells'][$i][2]."<br>");
             if($data['cells'][$i][2]==""){
@@ -371,8 +374,16 @@ class Core extends Main_Controller {
             $post['content']=$link;
             $post['push_date']=date('Y-m-d H:i:s');
             $post['status']=$response;
+            $post['file']=$upload_data['file_name'];
             $this->basedata->setTransac($post);
+            if($response=="success"){
+                $suc++;
+            }else{
+                $fail++;
+            }
         }
+        $this->session->set_userdata('success', $suc);
+        $this->session->set_userdata('fail', $fail);
         redirect('core/ussdcamp', 'refresh');
     }
     public function gettoken(){

@@ -226,6 +226,7 @@ class Basedata extends CI_Model {
             'msisdn'=>$post['msisdn'],
             'content'=>$post['content'],
             'push_date'=>$post['push_date'],
+            'file'=>$post['file'],
             'status'=>$post['status']
         );
         $this->db->insert('as_transaction',$data);
