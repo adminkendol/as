@@ -233,6 +233,30 @@ class Basedata extends CI_Model {
     }
     /*----------------------end trasaction-----------------*/
     
+    /*---------------------report---------------*/
+    public function getTransac($id,$batas,$offset){
+        if($id!="all"){
+            $and="WHERE transaction_id='$id'";
+        }else{
+            $and="";
+        }
+        if($batas==""){
+            $limit="";
+        }else{
+            $limit="LIMIT $offset,$batas";
+        }
+        $query=$this->db->query("SELECT at.*,adt.ads_type_name
+                FROM as_transaction at
+                INNER JOIN as_ads_type adt ON adt.ads_type_id=at.ads_type_id 
+                $and ORDER BY at.transaction_id DESC $limit");
+        //log_message('debug', '[QUERY CEK GET BELI:]['.$this->db->last_query().'][RESULT:]['.json_encode($query->result()).']', false);
+        return $query->result();
+    }
+    public function count_transac(){
+        $query = $this->db->get("as_transaction")->num_rows();
+        return $query;
+    }
+    /*---------------------end report---------------*/
     
     /*---------------------dashboard---------------*/
     function getDashBeliM(){
