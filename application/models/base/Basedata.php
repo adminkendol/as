@@ -234,11 +234,19 @@ class Basedata extends CI_Model {
     /*----------------------end trasaction-----------------*/
     
     /*---------------------report---------------*/
-    public function getTransac($id,$batas,$offset){
+    public function getTransac($id,$batas,$offset,$start,$end){
         if($id!="all"){
-            $and="WHERE transaction_id='$id'";
+            if(($start=="")||($end=="")){
+                $and="WHERE transaction_id='$id'";
+            }else{
+                $and="WHERE transaction_id='$id' AND DATE(push_date) BETWEEN '$start' AND '$end'";
+            }
         }else{
-            $and="";
+            if(($start=="")||($end=="")){
+                $and="";
+            }else{
+                $and="WHERE DATE(push_date) BETWEEN '$start' AND '$end'";
+            }
         }
         if($batas==""){
             $limit="";

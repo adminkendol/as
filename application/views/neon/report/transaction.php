@@ -6,11 +6,25 @@
         </div>
     </div>
     <div class="panel-body">
-        <div class="form-group">
-            <div>
-                
+        <form method="post" action="<?php echo base_url().'core/rep_transac';?>">
+            <div class="form-group">
+                <div>
+                    <label class="col-sm-2 control-label">Push date</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control tgl" name="start" id="start" value="">
+                    </div>
+                    <div class="col-md-1">To</div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control tgl" name="end" id="end" value="">
+                    </div>
+                    <div class="col-md-3">
+                        <button id="show" type="submit" class="btn btn-info">
+                            <span class="glyphicon glyphicon-plus"></span> Show
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <table class="table table-bordered table-responsive">
         <thead>

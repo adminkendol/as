@@ -414,7 +414,16 @@ class Core extends Main_Controller {
         $this->data['headtitle']="Report";
         $this->data['menu_id']="29";
         $id="all";
-        //pagination settings
+        if($this->input->post('start')!=""){
+            $start=date("Y-m-d",strtotime($this->input->post('start')));
+        }else{
+            $start="";
+        }
+        if($this->input->post('end')!=""){
+            $end=date("Y-m-d",strtotime($this->input->post('end')));
+        }else{
+            $end="";
+        }
         $this->settings['base_url'] = site_url('core/rep_transac');
         $this->settings['total_rows'] = $this->basedata->count_transac();
         $choice = $this->settings["total_rows"] / $this->settings["per_page"];
@@ -422,7 +431,7 @@ class Core extends Main_Controller {
         $this->pagination->initialize($this->settings);
         $this->data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $this->data['pagination'] = $this->pagination->create_links();
-        $this->data['transac']=$this->basedata->getTransac($id,$this->settings["per_page"], $this->data['page']);
+        $this->data['transac']=$this->basedata->getTransac($id,$this->settings["per_page"], $this->data['page'],$start,$end);
         $this->tempe->load($this->theme.'/modul',$this->theme.'/report/transaction',$this->data);
     }
     /*---------------------end report--------------------------------*/

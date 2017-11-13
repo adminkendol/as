@@ -251,7 +251,7 @@
        var path =window.location.pathname.split('/');
        var lastPath=path[path.length - 1];
         $('.tgl').datepicker({
-            format: 'dd-mm-yyyy',
+            format: 'yyyy-mm-dd',
             autoclose: true,
         }).on('changeDate', function (ev) {
             $(this).datepicker('hide');
