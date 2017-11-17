@@ -211,6 +211,10 @@ class Basedata extends CI_Model {
         $query=$this->db->query("SELECT * FROM as_rbt");
         return $query->result();
     }
+    public function getCampCat(){
+        $query=$this->db->query("SELECT * FROM as_campaign_category");
+        return $query->result();
+    }
     /*----------------------trasaction-----------------*/
     public function setTransac($post){
         $getId=$this->db->query("SELECT transaction_id FROM as_transaction ORDER BY push_date DESC limit 1");

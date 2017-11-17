@@ -409,6 +409,17 @@ class Core extends Main_Controller {
     }
     /*--------------end platform-----------------------------*/
     
+    /*---------------------air push--------------------------------*/
+    public function airpush(){
+        $this->data['headtitle']="Push Notification";
+        $this->data['menu_id']="30";
+        $this->data['parent']="15";
+        $this->data['campcat']=$this->basedata->getCampCat();
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/platform/camp_airpush',$this->data);
+    }    
+    /*---------------------end air push--------------------------------*/
+    
+    
     /*---------------------report--------------------------------*/
     public function rep_transac(){
         $this->data['headtitle']="Report";

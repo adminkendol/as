@@ -212,6 +212,13 @@
 	</div>
     </div>
 
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/icheck/skins/minimal/_all.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/icheck/skins/square/_all.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/icheck/skins/flat/_all.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/icheck/skins/futurico/futurico.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/icheck/skins/polaris/polaris.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/icheck/skins/line/_all.css">
+        
     <!-- Imported styles on this page -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/neon/assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/neon/assets/js/rickshaw/rickshaw.min.css">
@@ -224,6 +231,8 @@
     <script src="<?php echo base_url(); ?>assets/neon/assets/js/neon-api.js"></script>
     <script src="<?php echo base_url(); ?>assets/neon/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
     <!-- Imported scripts on this page -->
+    <script src="<?php echo base_url(); ?>assets/js/icheck/icheck.min.js"></script>
+    
     <script src="<?php echo base_url(); ?>assets/neon/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
     <script src="<?php echo base_url(); ?>assets/neon/assets/js/jquery.sparkline.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/neon/assets/js/rickshaw/vendor/d3.v3.js"></script>
@@ -245,6 +254,8 @@
     <script src="<?php echo base_url(); ?>assets/neon/assets/js/neon-custom.js"></script>
     <!-- Demo Settings -->
     <script src="<?php echo base_url(); ?>assets/neon/assets/js/neon-demo.js"></script>
+    
+    
     
     <script type="text/javascript">
     $(document).ready(function() {
