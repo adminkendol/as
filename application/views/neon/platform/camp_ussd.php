@@ -19,11 +19,12 @@
                 <th>Total msisdn</th>
                 <th>Content</th>
                 <th>Status</th>
+                <th>Filename</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr><td colspan="15" align="center">Data is empty</td></tr>
+            <tr><td colspan="6" align="center">Data is empty</td></tr>
             
         </tbody>
     </table>
