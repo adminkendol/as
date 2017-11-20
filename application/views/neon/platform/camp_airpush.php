@@ -42,6 +42,14 @@
                 <td><?php echo $l->campaigntype; ?></td>
                 <td><?php echo $l->campaignstatus; ?></td>
                 <td><?php echo $l->dailybudget; ?></td>
+                <td><?php echo $l->isfeed; ?></td>
+                <td><?php echo $l->is_cpi; ?></td>
+                <td><?php echo $l->ppm; ?></td>
+                <td><?php echo $l->ppmbid; ?></td>
+                <td><?php echo $l->budgetspent; ?></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         </tbody>
             <?php }
