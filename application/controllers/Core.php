@@ -4,8 +4,8 @@ class Core extends Main_Controller {
  
     function __construct(){
         parent::__construct();
-	//$this->load->library('platform');
-        $this->load->library('curl');
+	$this->load->library('platform');
+        //$this->load->library('curl');
     }
     function index(){	
         $this->dashboard();
@@ -420,6 +420,11 @@ class Core extends Main_Controller {
         $this->data['headtitle']="Push Notification";
         $this->data['menu_id']="30";
         $this->data['parent']="15";
+        $param=array('url'=>$this->url_airpush,
+                    'key'=>$this->key_airpush,
+                    'method'=>"getCampaignsByUserId");
+        $this->data['list']=$this->platform->airpush($param);
+        print_r($this->data['list']);die;
         $this->data['campcat']=$this->basedata->getCampCat();
         $this->tempe->load($this->theme.'/modul',$this->theme.'/platform/camp_airpush',$this->data);
     }    

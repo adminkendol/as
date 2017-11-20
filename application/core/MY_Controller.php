@@ -30,6 +30,8 @@ class Main_Controller extends CI_Controller {
         $this->theme=$this->config->item('theme');
         $this->data['title']=$this->config->item('title');
         $this->settings = $this->config->item('pagination');
+        $this->url_airpush=$this->config->item('url_airpush');
+        $this->key_airpush=$this->config->item('key_airpush');
         $this->load->model(array('base/basedata'));
         $this->data['menu']=$this->basedata->getMenu();
         $last = $this->uri->total_segments();

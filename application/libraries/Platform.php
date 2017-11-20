@@ -78,5 +78,11 @@ class Platform {
             return $response;
         }
     }
-    
+    function airpush($param){
+        $url=$param['url'];
+        $key=$param['key'];
+        $method=$param['method'];
+        $response=exec("curl -X POST  $url.$method  -d apikey='$key'  ");
+        return $response;
+    }
 }

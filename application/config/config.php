@@ -30,7 +30,8 @@ $config['base_url'] .=  str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVE
 $config['title']="Active Screen";
 //$config['theme']="default";
 $config['theme']="neon";
-
+$config['url_airpush']="http://openapi.airpush.com/";
+$config['key_airpush']="b15295778b01b6f819f290a3";
 /*
 |--------------------------------------------------------------------------
 | Index File
