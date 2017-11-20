@@ -47,6 +47,7 @@
                 <td><?php echo $l->ppm; ?></td>
                 <td><?php echo $l->ppmbid; ?></td>
                 <td><?php echo $l->budgetspent; ?></td>
+                <td><?php echo $l->ppm; ?></td>
                 <td></td>
                 <td></td>
                 <td></td>
