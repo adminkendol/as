@@ -82,8 +82,8 @@ class Platform {
         $url=$param['url'];
         $key=$param['key'];
         $method=$param['method'];
-        $response=exec("curl -X POST  $url.$method  -d apikey='$key'  ");
-        print_r("curl -X POST  $url.$method  -d apikey='$key'  ");
+        $response=exec("curl -X POST  $url/$method  -d apikey='$key'  ");
+        //print_r("curl -X POST  $url.$method  -d apikey='$key'  ");
         return $response;
     }
 }
