@@ -32,9 +32,20 @@
                 <th></th>
             </tr>
         </thead>
+        <?php 
+        if(sizeof($list)>0){
+            foreach ($list as $l){ ?>
+        <tbody>
+            <tr>
+                <td><?php echo $l->campaignname; ?></td>
+                <td><?php echo $l->campaignid; ?></td>
+            </tr>
+        </tbody>
+            <?php }
+        } else { ?>
         <tbody>
             <tr><td colspan="15" align="center">Data is empty</td></tr>
-            
         </tbody>
+        <?php } ?>
     </table>
 </div>	
