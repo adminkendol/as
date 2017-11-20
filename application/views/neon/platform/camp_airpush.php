@@ -39,6 +39,9 @@
             <tr>
                 <td><?php echo $l->campaignname; ?></td>
                 <td><?php echo $l->campaignid; ?></td>
+                <td><?php echo $l->campaigntype; ?></td>
+                <td><?php echo $l->campaignstatus; ?></td>
+                <td><?php echo $l->dailybudget; ?></td>
             </tr>
         </tbody>
             <?php }
