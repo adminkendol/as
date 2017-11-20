@@ -423,7 +423,7 @@ class Core extends Main_Controller {
         $param=array('url'=>$this->url_airpush,
                     'key'=>$this->key_airpush,
                     'method'=>"getCampaignsByUserId");
-        $this->data['list']=$this->platform->airpush($param);
+        $this->data['list']=(array) json_decode($this->platform->airpush($param));
         print_r($this->data['list']);die;
         $this->data['campcat']=$this->basedata->getCampCat();
         $this->tempe->load($this->theme.'/modul',$this->theme.'/platform/camp_airpush',$this->data);
