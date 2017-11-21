@@ -38,7 +38,13 @@
         <tbody>
             <?php foreach ($list as $l){  
                 $totB=$l->dailybudget;
-                $totB=$totB++; ?>
+                $totC=$l->isfeed;
+                $totD=$l->is_cpi;
+                $totE=$l->ppm;
+                $totB=$totB++; 
+                $totC=$totC++;
+                $totD=$totD++; 
+                $totE=$totE++; ?>
             <tr>
                 <td><?php echo $l->campaignname; ?></td>
                 <td><?php echo $l->campaignid; ?></td>
@@ -59,6 +65,11 @@
             <tr>
                 <td colspan="4" align="right">Account total and avarages:</td>
                 <td>$<?php echo $totB; ?></td>
+                <td><?php echo $totC; ?></td>
+                <td><?php echo $totD; ?></td>
+                <td><?php echo $totE; ?>%</td>
+                <td>-</td>
+                <td>-</td>
             </tr>
         </tbody>
         <?php } else { ?>
