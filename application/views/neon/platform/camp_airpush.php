@@ -41,10 +41,12 @@
                 $totC=$l->isfeed;
                 $totD=$l->is_cpi;
                 $totE=$l->ppm;
+                $totF=$l->budgetspent;
                 $totB=$totB++; 
                 $totC=$totC++;
                 $totD=$totD++; 
-                $totE=$totE++; ?>
+                $totE=$totE++; 
+                $totF=$totF++; ?>
             <tr>
                 <td><?php echo $l->campaignname; ?></td>
                 <td><?php echo $l->campaignid; ?></td>
@@ -68,6 +70,10 @@
                 <td><?php echo $totC; ?></td>
                 <td><?php echo $totD; ?></td>
                 <td><?php echo $totE; ?>%</td>
+                <td>-</td>
+                <td>-</td>
+                <td>$<?php echo $totF; ?></td>
+                <td>-</td>
                 <td>-</td>
                 <td>-</td>
             </tr>
