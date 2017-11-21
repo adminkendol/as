@@ -52,6 +52,9 @@
                 <td></td>
                 <td></td>
             </tr>
+            <tr>
+                <td colspan="4">Account total and avarages:</td>
+            </tr>
         </tbody>
             <?php }
         } else { ?>

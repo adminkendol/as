@@ -427,7 +427,13 @@ class Core extends Main_Controller {
         //print_r($this->data['list']);die;
         $this->data['campcat']=$this->basedata->getCampCat();
         $this->tempe->load($this->theme.'/modul',$this->theme.'/platform/camp_airpush',$this->data);
-    }    
+    }
+    public function addcamppush(){
+        $this->data['headtitle']="New Campaign";
+        $this->data['menu_id']="30";
+        $this->data['parent']="15";
+        
+    }
     /*---------------------end air push--------------------------------*/
     
     
