@@ -34,8 +34,11 @@
         </thead>
         <?php 
         if(sizeof($list)>0){
-            foreach ($list as $l){ ?>
+            ?>
         <tbody>
+            <?php foreach ($list as $l){  
+                $totB=$l->dailybudget;
+                $totB=$totB++; ?>
             <tr>
                 <td><?php echo $l->campaignname; ?></td>
                 <td><?php echo $l->campaignid; ?></td>
@@ -52,12 +55,13 @@
                 <td></td>
                 <td></td>
             </tr>
+            <?php } ?>
             <tr>
-                <td colspan="4">Account total and avarages:</td>
+                <td colspan="4" align="right">Account total and avarages:</td>
+                <td>$<?php echo $totB; ?></td>
             </tr>
         </tbody>
-            <?php }
-        } else { ?>
+        <?php } else { ?>
         <tbody>
             <tr><td colspan="15" align="center">Data is empty</td></tr>
         </tbody>
