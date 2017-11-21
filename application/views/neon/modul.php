@@ -207,7 +207,7 @@
             <?php echo $contents; ?>
             <!-- Footer -->
             <footer class="main">
-                &copy; 2015 <strong>Neon</strong> Admin Theme by <a href="http://laborator.co" target="_blank">Laborator</a>
+                &copy; <?php echo date("Y"); ?> <strong>Active Screen</strong> Admin Theme by <a href="" target="_blank">SBI</a>
             </footer>
 	</div>
     </div>
