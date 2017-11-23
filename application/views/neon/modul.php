@@ -273,7 +273,7 @@
             var judul = 'Ads weekly';
             var pointer = '';
             var legend = '';
-            charts.bar(datasA,dom,judul,pointer,legend);
+            /*charts.bar(datasA,dom,judul,pointer,legend);*/
         }
         $('#client').typeahead({
             items: 4,
