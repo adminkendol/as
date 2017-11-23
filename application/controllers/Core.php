@@ -312,7 +312,8 @@ class Core extends Main_Controller {
         $this->data['headtitle']="USSD";
         $this->data['menu_id']="17";
         $this->data['parent']="";
-        $this->tempe->load($this->theme.'/modul',$this->theme.'/platform/camp_ussd',$this->data);
+        //$this->tempe->load($this->theme.'/modul',$this->theme.'/platform/camp_ussd',$this->data);
+        $this->tempe->load($this->theme.'/modul',$this->theme.'/platform/form_camp',$this->data);
     }
     public function addcampussd(){
         $this->data['headtitle']="USSD";
