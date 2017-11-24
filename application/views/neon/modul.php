@@ -188,8 +188,8 @@
 				<li class="external"><a href="#">View all notifications</a></li>
                             </ul>
                         </li>
-                    </ul>
-		</div>-->
+                    </ul>>-->
+                </div>
 		<!-- Raw Links -->
 		<div class="col-md-6 col-sm-4 clearfix hidden-xs">
                     <ul class="list-inline links-list pull-right">
