@@ -39,12 +39,12 @@
                             <input type="file" class="form-control" name="filephone" value="">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <label class="col-sm-3 control-label">Header</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" name="header" value="">
                         </div>
-                    </div>
+                    </div>-->
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Link</label>
                         <div class="col-sm-5">
