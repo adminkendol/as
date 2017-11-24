@@ -121,8 +121,8 @@
                             </ul>
 			</li>
                     </ul>
-                    <ul class="user-info pull-left pull-right-xs pull-none-xsm">
-                        <!-- Raw Notifications -->
+                    <!--<ul class="user-info pull-left pull-right-xs pull-none-xsm">
+                        <!-- Raw Notifications 
 			<li class="notifications dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <i class="entypo-attention"></i>
@@ -189,7 +189,7 @@
                             </ul>
                         </li>
                     </ul>
-		</div>
+		</div>-->
 		<!-- Raw Links -->
 		<div class="col-md-6 col-sm-4 clearfix hidden-xs">
                     <ul class="list-inline links-list pull-right">

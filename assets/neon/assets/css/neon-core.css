@@ -11570,6 +11570,18 @@ table {
   width: 250px;
   margin: 0 auto;
 }
+body.page-fade-login {
+  background: #2480d6;
+  -webkit-transition: 400ms all ease-in-out;
+  -moz-transition: 400ms all ease-in-out;
+  -o-transition: 400ms all ease-in-out;
+  transition: 400ms all ease-in-out;
+  -webkit-transform-origin: 50% 30%;
+  -moz-transform-origin: 50% 30%;
+  -ms-transform-origin: 50% 30%;
+  -o-transform-origin: 50% 30%;
+  transform-origin: 50% 30%;
+}
 body.page-fade {
   background: #303641;
   -webkit-transition: 400ms all ease-in-out;
