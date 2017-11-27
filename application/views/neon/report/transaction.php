@@ -10,14 +10,17 @@
             <div class="form-group">
                 <div>
                     <label class="col-sm-2 control-label">Push date</label>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <input type="text" class="form-control tgl" name="start" id="start" value="">
                     </div>
                     <div class="col-md-1">To</div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <input type="text" class="form-control tgl" name="end" id="end" value="">
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" name="search" id="search" value="" placeholder="search missdn">
+                    </div>
+                    <div class="col-md-2">
                         <button id="show" type="submit" class="btn btn-info">
                             <span class="glyphicon glyphicon-plus"></span> Show
                         </button>

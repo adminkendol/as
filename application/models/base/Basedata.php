@@ -241,9 +241,9 @@ class Basedata extends CI_Model {
     public function getTransac($id,$batas,$offset,$start,$end){
         if($id!="all"){
             if(($start=="")||($end=="")){
-                $and="WHERE transaction_id='$id'";
+                $and="WHERE msisdn='$id'";
             }else{
-                $and="WHERE transaction_id='$id' AND DATE(push_date) BETWEEN '$start' AND '$end'";
+                $and="WHERE msisdn='$id' AND DATE(push_date) BETWEEN '$start' AND '$end'";
             }
         }else{
             if(($start=="")||($end=="")){
@@ -264,9 +264,25 @@ class Basedata extends CI_Model {
         //log_message('debug', '[QUERY CEK GET BELI:]['.$this->db->last_query().'][RESULT:]['.json_encode($query->result()).']', false);
         return $query->result();
     }
-    public function count_transac(){
-        $query = $this->db->get("as_transaction")->num_rows();
-        return $query;
+    public function count_transac($id,$start,$end){
+        if($id!="all"){
+            if(($start=="")||($end=="")){
+                $and="WHERE msisdn='$id'";
+            }else{
+                $and="WHERE msisdn='$id' AND DATE(push_date) BETWEEN '$start' AND '$end'";
+            }
+        }else{
+            if(($start=="")||($end=="")){
+                $and="";
+            }else{
+                $and="WHERE DATE(push_date) BETWEEN '$start' AND '$end'";
+            }
+        }
+        $query=$this->db->query("SELECT at.*,adt.ads_type_name
+                FROM as_transaction at
+                INNER JOIN as_ads_type adt ON adt.ads_type_id=at.ads_type_id 
+                $and");
+        return sizeof($query->result());
     }
     /*---------------------end report---------------*/
     

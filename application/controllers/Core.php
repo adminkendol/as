@@ -442,7 +442,6 @@ class Core extends Main_Controller {
     public function rep_transac(){
         $this->data['headtitle']="Report";
         $this->data['menu_id']="29";
-        $id="all";
         if($this->input->post('start')!=""){
             $start=date("Y-m-d",strtotime($this->input->post('start')));
         }else{
@@ -453,8 +452,13 @@ class Core extends Main_Controller {
         }else{
             $end="";
         }
+        if($this->input->post('search')!=""){
+            $id=$this->input->post('search');
+        }else{
+            $id="all";
+        }
         $this->settings['base_url'] = site_url('core/rep_transac');
-        $this->settings['total_rows'] = $this->basedata->count_transac();
+        $this->settings['total_rows'] = $this->basedata->count_transac($id,$start,$end);
         $choice = $this->settings["total_rows"] / $this->settings["per_page"];
         //$this->settings["num_links"] = floor($choice);
         $this->pagination->initialize($this->settings);
