@@ -27,13 +27,22 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
-<body class="page-body  page-fade-login gray">
+<body class="page-fade-login">
     <div class="row">
         <div class="col-md-6">
             <img src="<?php echo base_url();?>assets/img/login/phone.jpg" style="position: fixed;height: 100%;width: auto;" />
         </div>
         <div class="col-md-6">
-            <img src="<?php echo base_url();?>assets/img/login/company.jpg" />
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="<?php echo base_url();?>assets/img/login/company.png" style="position: fixed;margin-top:5%;" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="<?php echo base_url();?>assets/img/login/loginBox.png"  style="position: fixed;height: 50%;width: auto;margin-top:17%;" />
+                </div>
+            </div>
         </div>
     </div>
 </body>

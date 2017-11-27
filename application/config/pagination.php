@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-$config['per_page'] = "5";
+$config['per_page'] = "10";
 $config["uri_segment"] = 3;
 //config for bootstrap pagination class integration
 $config['full_tag_open'] = '<ul class="pagination">';
