@@ -8,6 +8,7 @@
 
 $config['per_page'] = "10";
 $config["uri_segment"] = 3;
+$config['num_links'] = 5;
 //config for bootstrap pagination class integration
 $config['full_tag_open'] = '<ul class="pagination">';
 $config['full_tag_close'] = '</ul>';

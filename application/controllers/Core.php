@@ -456,7 +456,7 @@ class Core extends Main_Controller {
         $this->settings['base_url'] = site_url('core/rep_transac');
         $this->settings['total_rows'] = $this->basedata->count_transac();
         $choice = $this->settings["total_rows"] / $this->settings["per_page"];
-        $this->settings["num_links"] = floor($choice);
+        //$this->settings["num_links"] = floor($choice);
         $this->pagination->initialize($this->settings);
         $this->data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $this->data['pagination'] = $this->pagination->create_links();
