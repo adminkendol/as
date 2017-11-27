@@ -44,23 +44,7 @@
                     <div class="login-form" style="margin-top: 50%;margin-left: 5%;">
                         <div class="login-content">
                             <form method="post" action="<?php echo base_url().'login/enter';?>" role="form" id="form_login">
-                            <?php
-                                if(validation_errors()){ ?>
-                                <div class="input-group">
-                                    <div class="alert alert-danger">
-                                        <button type="button" aria-hidden="true" class="close">×</button>
-                                        <span><?php echo validation_errors();?></span>
-                                    </div>
-                                </div>
-                            <?php } if($valid=="1"){?>
-                                <div class="input-group">
-                                    <div class="alert alert-warning">
-                                        <button type="button" aria-hidden="true" class="close">×</button>
-                                        <span>Password salah</span>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                                <div class="form-group" style="width: 30%;">
+                            <div class="form-group" style="width: 30%;">
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="entypo-user"></i></div>
                                     <input type="text" class="form-control" name="username" id="username" value="" placeholder="Username" autocomplete="off" />
@@ -77,6 +61,22 @@
                                     <button type="submit" class="btn btn-red btn-block btn-login"><i class="entypo-login"></i>Login In</button>
                                 </div>
                             </div>
+                            <?php
+                                if(validation_errors()){ ?>
+                                <div class="input-group">
+                                    <div class="alert alert-danger">
+                                        <button type="button" aria-hidden="true" class="close">×</button>
+                                        <span><?php echo validation_errors();?></span>
+                                    </div>
+                                </div>
+                            <?php } if($valid=="1"){?>
+                                <div class="input-group">
+                                    <div class="alert alert-warning">
+                                        <button type="button" aria-hidden="true" class="close">×</button>
+                                        <span>Password salah</span>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             </form>
                         </div>
                     </div>
