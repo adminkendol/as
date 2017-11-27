@@ -241,9 +241,9 @@ class Basedata extends CI_Model {
     public function getTransac($id,$batas,$offset,$start,$end){
         if($id!="all"){
             if(($start=="")||($end=="")){
-                $and="WHERE msisdn='$id'";
+                $and="WHERE msisdn LIKE '%$id%'";
             }else{
-                $and="WHERE msisdn='$id' AND DATE(push_date) BETWEEN '$start' AND '$end'";
+                $and="WHERE msisdn LIKE '%$id%' AND DATE(push_date) BETWEEN '$start' AND '$end'";
             }
         }else{
             if(($start=="")||($end=="")){
@@ -267,9 +267,9 @@ class Basedata extends CI_Model {
     public function count_transac($id,$start,$end){
         if($id!="all"){
             if(($start=="")||($end=="")){
-                $and="WHERE msisdn='$id'";
+                $and="WHERE msisdn LIKE '%$id%'";
             }else{
-                $and="WHERE msisdn='$id' AND DATE(push_date) BETWEEN '$start' AND '$end'";
+                $and="WHERE msisdn LIKE '%$id%' AND DATE(push_date) BETWEEN '$start' AND '$end'";
             }
         }else{
             if(($start=="")||($end=="")){
