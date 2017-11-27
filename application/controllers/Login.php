@@ -28,8 +28,8 @@ class Login extends CI_Controller {
         $this->data['menu']=$this->menu;
         $this->data['menu_id']="0";
         $this->data['valid']="0";
-        $this->tempe->load($this->theme.'/modul',$this->theme.'/login',$this->data);
-        //$this->load->view('neon/login_1',$this->data);
+        //$this->tempe->load($this->theme.'/modul',$this->theme.'/login',$this->data);
+        $this->load->view('neon/login_1',$this->data);
     }
     public function enter(){
         $this->data['title']=$this->title;
@@ -41,7 +41,8 @@ class Login extends CI_Controller {
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         if ($this->form_validation->run() == FALSE){
-            $this->tempe->load($this->theme.'/modul',$this->theme.'/login',$this->data);
+            //$this->tempe->load($this->theme.'/modul',$this->theme.'/login',$this->data);
+            $this->load->view('neon/login_1',$this->data);
         }else{
             $result=$this->basedata->cekLogin($post);
             if(sizeof($result)>0){
@@ -55,7 +56,8 @@ class Login extends CI_Controller {
                 redirect('core/dashboard', 'refresh');
             }else{
                 $this->data['valid']="1";
-                $this->tempe->load($this->theme.'/modul',$this->theme.'/login',$this->data);
+                //$this->tempe->load($this->theme.'/modul',$this->theme.'/login',$this->data);
+                $this->load->view('neon/login_1',$this->data);
             }
         }
     }
