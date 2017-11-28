@@ -349,7 +349,7 @@ class Core extends Main_Controller {
     public function sendussdcamp(){
         $config['upload_path'] = FCPATH.'temp/';
         $config['allowed_types'] = 'xls';
-        $config['max_size'] = '10000';
+        $config['max_size'] = '1000000000000';
         $this->load->library('upload', $config);
         $this->upload->do_upload('filephone');	
         
