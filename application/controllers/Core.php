@@ -374,7 +374,7 @@ class Core extends Main_Controller {
                 break;
             }
             //$response=$this->exeussd($data['cells'][$i][2],$link);
-            ussleep(50000);
+            usleep(50000);
             $response=$this->exeussdstag($data['cells'][$i][2],$link);
             //$response="success";
             $post['type']='1';
