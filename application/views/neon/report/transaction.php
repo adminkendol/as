@@ -18,7 +18,7 @@
                         <input type="text" class="form-control tgl" name="end" id="end" value="">
                     </div>
                     <div class="col-md-2">
-                        <input type="text" class="form-control" name="search" id="search" value="" placeholder="search missdn">
+                        <input type="text" class="form-control" name="search" id="search" value="<?php echo $search; ?>" placeholder="search missdn">
                     </div>
                     <div class="col-md-2">
                         <button id="show" type="submit" class="btn btn-info">

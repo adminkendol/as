@@ -374,6 +374,7 @@ class Core extends Main_Controller {
                 break;
             }
             //$response=$this->exeussd($data['cells'][$i][2],$link);
+            ussleep(50000);
             $response=$this->exeussdstag($data['cells'][$i][2],$link);
             //$response="success";
             $post['type']='1';
@@ -454,8 +455,10 @@ class Core extends Main_Controller {
         }
         if($this->input->post('search')!=""){
             $id=$this->input->post('search');
+            $this->data['search']=$id;
         }else{
             $id="all";
+            $this->data['search']="";
         }
         $this->settings['base_url'] = site_url('core/rep_transac');
         $this->settings['total_rows'] = $this->basedata->count_transac($id,$start,$end);
